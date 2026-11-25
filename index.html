@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#f8f7fc">
+<meta name="description" content="Escolha um dos 75 números, revele a pergunta e marque alguém do grupo.">
+<title>Marque quem? · Entre Nós</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='12' fill='%236344c9'/%3E%3Cg fill='white'%3E%3Ccircle cx='12' cy='12' r='3'/%3E%3Ccircle cx='28' cy='12' r='3'/%3E%3Ccircle cx='20' cy='20' r='3'/%3E%3Ccircle cx='12' cy='28' r='3'/%3E%3Ccircle cx='28' cy='28' r='3'/%3E%3C/g%3E%3C/svg%3E">
+<style>*{box-sizing:border-box}
+:root{color-scheme:light;--ink:#292338;--muted:#655f73;--violet:#6741c8;--edge:#e3dfeb;--body:"DM Sans",ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;color:var(--ink);font-family:var(--body);background:#f8f7fb}
+body{margin:0;min-height:100vh;-webkit-font-smoothing:antialiased}button,input,a{font:inherit}button,a{touch-action:manipulation}button{cursor:pointer}button:disabled{cursor:default}button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #a98ae6;outline-offset:3px}[hidden]{display:none!important}
+.topbar{background:#fff;border-bottom:1px solid var(--edge)}header,main{max-width:1256px;width:calc(100% - 88px);margin:auto}header{display:flex;align-items:center;justify-content:space-between;height:74px}.brand{display:inline-flex;gap:12px;align-items:center;color:var(--ink);text-decoration:none;font-size:1.68rem;font-weight:800;letter-spacing:-.075em}.brand-dot{color:#9263de}.dice{width:34px;height:34px;border:2px solid #473070;background:#9576e0;border-radius:9px;display:block;position:relative;transform:rotate(-9deg);box-shadow:2px 2px #46306d}.dice i{width:5px;height:5px;border-radius:50%;background:#fff9f8;position:absolute}.dice i:nth-child(1){top:6px;left:6px}.dice i:nth-child(2){top:6px;right:6px}.dice i:nth-child(3){top:50%;left:50%;transform:translate(-50%,-50%)}.dice i:nth-child(4){bottom:6px;left:6px}.dice i:nth-child(5){bottom:6px;right:6px}
+.ico{width:1.14em;height:1.14em;display:inline-block;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.share,.secondary,.reset,.text-button,.primary,.close{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;border-radius:11px;min-height:43px;font-weight:650;font-size:.92rem;transition:background .15s,color .15s,box-shadow .15s}
+.share,.secondary{border:1px solid #dcd5e6;background:#fff;padding:0 15px;color:#4d4261}.share:hover,.secondary:hover{background:#f7f3ff}.share .ico{color:#6844b2}
+main{padding:28px 0 36px}.intro{position:relative;overflow:hidden;isolation:isolate;background:linear-gradient(102deg,#ede6fc 0%,#e9e2fb 48%,#e1d5f8 100%);border:1px solid #ded2f1;border-radius:23px;min-height:216px;display:flex;align-items:center}.intro:after{content:"";position:absolute;z-index:-1;inset:0 0 0 45%;background-image:radial-gradient(#917aaf40 .85px,transparent 1px);background-size:8px 8px;mask-image:linear-gradient(90deg,transparent,#000 68%)}.hero-copy{padding:29px 40px;z-index:2}.game-type{display:inline-flex;align-items:center;gap:7px;font-size:.82rem;font-weight:700;color:#573988;background:#ffffff75;border:1px solid #d3c5e9;border-radius:20px;padding:5px 10px}.game-type .ico{width:15px;height:15px}h1,h2,h3,p{margin:0}h1{font-size:clamp(3.45rem,6.2vw,5.8rem);line-height:1.06;margin:10px 0 10px;letter-spacing:-.076em;font-weight:780;color:#30213e}h1 em{font:italic 1.105em/.85 Georgia,"Times New Roman",serif;color:#7350a9;letter-spacing:-.085em;white-space:nowrap}.intro p{font-size:1.055rem;line-height:1.55;color:#51425e}.wide{display:none}
+.art-wrap{position:absolute;inset:0 1% 0 auto;width:38%;display:grid;place-items:center}.art{position:relative;width:335px;height:213px;isolation:isolate}.orbit{position:absolute;width:402px;height:124px;left:-23px;top:75px;border:1px dashed #9380b7;border-radius:50%;transform:rotate(-17deg);opacity:.68}
+.deck-card{position:absolute;border:2px solid #392b47;width:110px;height:151px;border-radius:12px;box-shadow:3px 4px 0 #43324b}.back{top:34px;left:69px;transform:rotate(-23deg);background:#ae8ddb;padding:5px}.pattern{height:100%;border:1.5px solid #583971;border-radius:7px;background:repeating-conic-gradient(#aa86d5 0% 25%,#8056b4 0% 50%) 0 0/18px 18px}.middle{top:23px;left:113px;transform:rotate(-7deg);background:#f3b3c1;box-shadow:2px 3px 0 #43324b}.middle:before{content:"";position:absolute;inset:5px;border:1px solid #916575;border-radius:6px}.middle-dot{display:grid;place-items:center;height:100%;font:60px Georgia;color:#ad5477}.face{top:34px;left:155px;background:#fff3c7;transform:rotate(15deg);padding:5px}.card-inner{position:relative;width:100%;height:100%;border:1px solid #d3b87e;border-radius:6px}.card-corner{position:absolute;top:4px;left:6px;font:700 20px/.9 Georgia;color:#8e436c;text-align:center}.card-corner i{font:10px/1 Georgia;display:block;margin-top:1px}.middle>.card-corner{top:10px;left:9px}.card-corner.bottom{top:auto;left:auto;right:5px;bottom:4px;transform:rotate(180deg)}.mascot{position:absolute;width:77%;height:70%;left:12%;top:16%}.sparkle{position:absolute;line-height:1;font-family:Georgia,serif}.sp1{font-size:43px;left:22px;top:46px;color:#f9db80;-webkit-text-stroke:1.5px #524157;transform:rotate(-6deg)}.sp2{font-size:32px;right:5px;top:105px;color:#a995e7;-webkit-text-stroke:1.4px #524157}.sp3{font-size:28px;left:53px;bottom:13px;color:#615478}.sp4{font-size:17px;right:18px;top:44px;color:#654c84}
+.columns{display:grid;grid-template-columns:1fr 1.11fr;gap:20px;margin-top:23px;align-items:stretch}.panel{border-radius:20px;border:1px solid var(--edge);background:white;padding:24px;box-shadow:0 3px 10px #35254405;min-width:0}.consult{display:flex;flex-direction:column}.panel-heading,.board-top{display:flex;align-items:center}.panel-heading{gap:11px}.board-top{justify-content:space-between;gap:6px}.icon-tile{width:38px;height:38px;border-radius:12px;background:#efe8fe;color:#6b47b5;display:inline-grid;place-items:center;flex:none}.icon-tile .ico{width:21px;height:21px}.icon-tile.mint{background:#e1f1ed;color:#386e67}h2{font-size:clamp(1.24rem,1.8vw,1.52rem);line-height:1.15;letter-spacing:-.048em;font-weight:720}
+form{margin-top:21px}label{font-size:.97rem;color:var(--muted);display:block;margin-bottom:10px}.controls{display:flex;gap:10px}.input-wrap{flex:1;min-width:0;display:flex;align-items:center;border:1px solid #cec8da;border-radius:11px;padding:0 12px;color:#9b91aa;background:#fff;transition:border-color .15s}.input-wrap:focus-within{border-color:var(--violet);box-shadow:0 0 0 3px #7445cd18}.input-wrap>span{font-weight:600}.input-wrap input{outline:none;border:0;width:100%;height:45px;color:var(--ink);font-size:1rem;background:transparent;padding:0 8px}.input-wrap input:focus-visible{outline:0}input::placeholder{color:#81798d}.primary{background:#6c48bd;color:#fff;border:1px solid #6441b3;padding:0 16px;text-decoration:none;min-height:46px}.primary:hover{background:#59369f}.primary:active{background:#4c298d}.error,.save-error{font-size:.9rem;color:#9a2c4c;margin-top:9px}.question{position:relative;isolation:isolate;border:1px solid #ded2ee;border-radius:15px;flex:1;min-height:239px;margin-top:22px;background:linear-gradient(135deg,#fbf8ff,#f4edfc);display:flex;flex-direction:column;overflow:hidden;padding:20px}.question:after{content:"";pointer-events:none;position:absolute;border:1px solid #dacbe58a;border-radius:50%;width:210px;height:210px;bottom:-178px;right:-53px;box-shadow:0 0 0 12px #f6effb,0 0 0 13px #decee78a,0 0 0 25px #f6effb,0 0 0 26px #decee780;z-index:-1}.card-caption{display:flex;align-items:center;gap:8px;text-transform:uppercase;letter-spacing:.12em;font-size:.76rem;font-weight:750;color:#705585}.caption-mark{width:6px;height:6px;background:#aa85d5;transform:rotate(45deg)}.empty-state,.result{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}.empty-state{padding:16px 0}.tiny-deck{position:relative;width:67px;height:63px;margin-bottom:12px}.tiny-deck span,.tiny-deck b{position:absolute;display:grid;place-items:center;width:34px;height:46px;top:7px;border-radius:5px;border:1.7px solid #8661ae}.tiny-deck span{background:repeating-linear-gradient(45deg,#d3bee9 0px 3px,#e9ddf5 3px 6px);transform:rotate(-18deg);left:9px}.tiny-deck b{transform:rotate(10deg);left:24px;top:9px;background:#f9f2ff;font:italic 31px Georgia;color:#7953a0;box-shadow:1.5px 2px 0 #a78dc0}.tiny-deck i{position:absolute;left:0;top:0;color:#9275b0;font-size:14px;font-style:normal}.empty-state h3{font-size:1.18rem;letter-spacing:-.035em;color:#51405f}.empty-state p{font-size:.93rem;line-height:1.5;margin-top:6px;color:#736480}.result{align-items:flex-start;text-align:left;padding:22px 0 6px;gap:20px}.result h3{font-size:clamp(1.36rem,2.2vw,2.02rem);line-height:1.2;letter-spacing:-.04em}.revealed{animation:appear .2s ease-out}.text-button{background:#fbf8ff;color:#64478b;border:1px solid #dbcde8;padding:6px 10px;min-height:36px}.text-button:hover{background:#ebe0f5}
+.count{font-size:.86rem;font-weight:700;color:#63586f;background:#f3eff7;border-radius:20px;padding:5px 10px;white-space:nowrap;font-variant-numeric:tabular-nums}.legend{margin:20px 0 15px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;color:#625b6e;font-size:.82rem}.legend span{display:flex;align-items:center;gap:6px}.legend i{width:11px;height:11px;background:#f7f5fa;border:1px solid #c9c1d4;border-radius:3px}.legend i.used-dot{background:#7754bd;border-color:#6948ab}.legend b{font-weight:650;color:#51465e}.grid{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:6px}.num{display:grid;place-content:center;min-height:34px;padding:0;color:#494152;background:#faf9fc;border:1px solid #e2dce9;border-radius:7px;font-size:.94rem;font-weight:600;font-variant-numeric:tabular-nums;transition:background .12s,border-color .12s}.num:hover{background:#efe8fb;border-color:#bba7d9}.num.used{color:#fff;background:#7754bd;border-color:#6b48b0}.num.current{outline:2px solid #45246e;outline-offset:1px}.board-footer{margin-top:16px;border-top:1px solid #ece8f0;padding-top:12px;display:flex;align-items:center;justify-content:space-between;gap:10px}.board-footer>span{font-size:.81rem;color:var(--muted);line-height:1.3}.reset{color:#665a71;background:white;border:0;padding:4px 3px;min-height:30px;white-space:nowrap;font-size:.86rem}.reset:hover:enabled{color:#713753;background:#fbf4f8}.reset:disabled{color:#88808f}.sr-only{position:absolute;width:1px;height:1px;clip-path:inset(100%);overflow:hidden;white-space:nowrap}.save-error{text-align:center}
+dialog{max-width:min(430px,calc(100vw - 32px));padding:0;color:var(--ink);border:1px solid var(--edge);border-radius:20px;box-shadow:0 18px 70px #28193930}dialog::backdrop{background:#281e3e65}.dialog-content{padding:28px;position:relative}.dialog-content h2{margin:16px 0 10px}.dialog-content p{font-size:1rem;line-height:1.55;color:var(--muted)}.dialog-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:23px}.dialog-actions button,.dialog-actions a{min-height:44px}.close{position:absolute;top:12px;right:14px;color:#71657e;background:none;border:none;min-width:38px;min-height:38px}.close:hover{background:#f4effa}
+@keyframes appear{from{transform:translateY(3px);opacity:.45}to{transform:translateY(0);opacity:1}}
+@media(min-width:1450px){main{padding-top:36px}.intro{min-height:236px}.columns{gap:24px;margin-top:26px}.panel{padding:28px}.num{min-height:40px}}
+@media(max-width:1050px){header,main{width:calc(100% - 48px)}.panel{padding:19px}.columns{gap:15px;grid-template-columns:.94fr 1fr}.grid{gap:5px}.art-wrap{right:3%}.hero-copy{padding:28px}.controls{gap:7px}.controls .primary{padding:0 12px}.question{padding:17px}.board-footer>span{max-width:135px}}
+@media(max-width:780px){header,main{width:calc(100% - 32px)}.columns{grid-template-columns:1fr;gap:16px}.intro{min-height:183px}.hero-copy{padding:21px}.intro p{max-width:320px;font-size:1rem}.art-wrap{transform:scale(.78);transform-origin:60% 55%;right:4%}.question{min-height:195px}.grid{gap:7px}.num{min-height:40px}.board-footer>span{max-width:none}.panel{padding:20px}.board-top h2{font-size:1.35rem}}
+@media(max-width:540px){header{height:61px}.brand{font-size:1.4rem;gap:9px}.dice{width:29px;height:29px}.dice i{width:4px;height:4px}.share{min-height:38px;font-size:.83rem;padding:0 10px;gap:6px}main{padding:17px 0 24px}.intro{min-height:172px;border-radius:17px}.hero-copy{padding:18px 14px;max-width:72%}.game-type{font-size:.73rem;padding:4px 8px}.game-type .ico{width:13px;height:13px}h1{font-size:clamp(2.4rem,8.6vw,3.3rem);margin:12px 0 9px;line-height:1.13}.intro p{font-size:.9rem;line-height:1.42;max-width:220px}.art-wrap{width:135px;right:-16px;transform:none;top:-5px}.art{position:absolute;transform:scale(.5);transform-origin:center}.orbit{width:260px;left:30px}.sp2,.sp4{display:none}.columns{margin-top:15px}.panel{padding:16px;border-radius:16px}.panel-heading{gap:9px}.icon-tile{width:34px;height:34px;border-radius:10px}.question{margin-top:17px;min-height:174px}.empty-state{padding:8px 0}.tiny-deck{transform:scale(.82);height:49px;margin-bottom:12px}.empty-state h3{font-size:1.08rem}.empty-state p{font-size:.85rem}.controls .primary{font-size:.88rem}.grid{grid-template-columns:repeat(8,minmax(0,1fr));gap:5px}.num{min-height:38px}.board-footer{align-items:center}.legend{margin:16px 0 12px;gap:14px}form{margin-top:15px}.result{padding:20px 0 2px}.wide{display:none}}
+@media(max-width:355px){main,header{width:calc(100% - 20px)}.art-wrap{right:-36px}h1{font-size:2.15rem}.controls .primary{padding:0 9px}.panel{padding:13px}.grid{grid-template-columns:repeat(7,minmax(0,1fr))}.board-footer>span{max-width:125px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+#link-tools label{margin:16px 0 6px}#share-link{width:100%;border:1px solid var(--edge);padding:10px;border-radius:8px;color:var(--ink);font:inherit}#share-message{margin-top:12px}</style>
+</head><body>
+<div class="topbar"><header>
+<a class="brand" href="#inicio" aria-label="Entre Nós, início"><span class="dice" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span>Entre Nós<span class="brand-dot">.</span></span></a>
+<button type="button" class="share" id="share"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="2.7"/><circle cx="6" cy="12" r="2.7"/><circle cx="18" cy="19" r="2.7"/><path d="m8.5 10.7 7.1-4.3M8.5 13.3l7.1 4.3"/></svg> Compartilhar jogo</button>
+</header></div>
+<main id="inicio">
+<section class="intro" aria-labelledby="game-name">
+<div class="hero-copy"><span class="game-type"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M2 20v-2a6 6 0 0 1 12 0v2M16 5a3 3 0 0 1 0 6m1.5 3.5c2.6.3 4.5 2.1 4.5 5.5"/></svg> Jogo de grupo</span>
+<h1 id="game-name">Marque <em>quem?</em></h1>
+<p>Escolha um número, revele a pergunta<br class="wide"> e marque alguém do grupo.</p></div>
+<div class="art-wrap" aria-hidden="true"><div class="art">
+<div class="orbit"></div><div class="deck-card back"><div class="pattern"></div></div>
+<div class="deck-card middle"><span class="card-corner">A<i>♦</i></span><span class="middle-dot">♦</span></div>
+<div class="deck-card face"><div class="card-inner"><span class="card-corner">A<i>♥</i></span><span class="card-corner bottom">A<i>♥</i></span>
+<svg class="mascot" viewBox="-5 -5 120 115" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M50 96C45 91 5 67 3 37 1 14 23-2 44 12l9 8C67-6 95-3 104 18c15 35-28 68-54 78Z" fill="#f18aa8" stroke="#322742" stroke-width="3.2" stroke-linejoin="round"/><path d="M12 33c1-10 8-15 14-15" stroke="#ffe1ed" stroke-width="5" stroke-linecap="round"/><ellipse cx="40" cy="41" rx="3.8" ry="7" fill="#322742"/><ellipse cx="64" cy="40" rx="3.8" ry="7" fill="#322742"/><path d="M43 56c6 8 14 8 20-1" stroke="#322742" stroke-width="3" stroke-linecap="round"/><g fill="#e36e97"><ellipse cx="32" cy="52" rx="6" ry="3" transform="rotate(-9 32 52)"/><ellipse cx="73" cy="49" rx="6" ry="3" transform="rotate(-9 73 49)"/></g></svg>
+</div></div>
+<span class="sparkle sp1">✦</span><span class="sparkle sp2">✦</span><span class="sparkle sp3">✧</span><span class="sparkle sp4">✦</span>
+</div></div></section>
+<div class="columns">
+<section class="panel consult" aria-labelledby="play-title">
+<div class="panel-heading"><span class="icon-tile"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6.8 5.6-2.6.8a2 2 0 0 0-1.3 2.5L6.5 20a2 2 0 0 0 2.5 1.3l2.9-.9"/><rect x="9" y="3" width="11" height="16" rx="2" transform="rotate(6 14.5 11)"/><path d="m14.5 8-2.2 3 2.2 3 2.2-3z"/></svg></span><h2 id="play-title">Consultar número</h2></div>
+<form id="pick-form" novalidate>
+<label for="pick">Digite um número de 1 a 75.</label>
+<div class="controls"><div class="input-wrap"><span aria-hidden="true">#</span><input type="text" inputmode="numeric" id="pick" placeholder="Ex.: 12" autocomplete="off" enterkeyhint="go" aria-describedby="number-error"></div>
+<button class="primary" type="submit"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m11 3 2.1 5.9L19 11l-5.9 2.1L11 19l-2.1-5.9L3 11l5.9-2.1zM20 3v4m-2-2h4"/></svg> Revelar pergunta</button></div>
+<p class="error" id="number-error" role="alert" hidden></p></form>
+<div class="question" id="card">
+<div class="card-caption"><span class="caption-mark" aria-hidden="true"></span><span id="card-caption">Carta da vez</span></div>
+<div class="empty-state" id="empty"><div class="tiny-deck" aria-hidden="true"><span></span><b>?</b><i>✦</i></div>
+<h3>A pergunta está na sua mão</h3><p>Digite um número ou toque no painel para revelar.</p></div>
+<div class="result" id="result" hidden><h3 id="question-text"></h3><button id="copy-question" class="text-button" type="button"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="13" rx="2"/><path d="M15 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/></svg> Copiar pergunta</button></div>
+</div>
+</section>
+<section class="panel board" aria-labelledby="board-title"><div class="board-top"><div class="panel-heading"><span class="icon-tile mint"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></span><h2 id="board-title">Painel da rodada</h2></div><span class="count" id="count">0 / 75</span></div>
+<div class="legend"><span><i></i> Disponíveis <b id="remaining">75</b></span><span><i class="used-dot"></i> Selecionadas <b id="used-count">0</b></span></div>
+<div id="grid" class="grid" aria-label="Escolher um número"><button type="button" class="num" value="1" aria-label="Número 1, disponível">1</button><button type="button" class="num" value="2" aria-label="Número 2, disponível">2</button><button type="button" class="num" value="3" aria-label="Número 3, disponível">3</button><button type="button" class="num" value="4" aria-label="Número 4, disponível">4</button><button type="button" class="num" value="5" aria-label="Número 5, disponível">5</button><button type="button" class="num" value="6" aria-label="Número 6, disponível">6</button><button type="button" class="num" value="7" aria-label="Número 7, disponível">7</button><button type="button" class="num" value="8" aria-label="Número 8, disponível">8</button><button type="button" class="num" value="9" aria-label="Número 9, disponível">9</button><button type="button" class="num" value="10" aria-label="Número 10, disponível">10</button><button type="button" class="num" value="11" aria-label="Número 11, disponível">11</button><button type="button" class="num" value="12" aria-label="Número 12, disponível">12</button><button type="button" class="num" value="13" aria-label="Número 13, disponível">13</button><button type="button" class="num" value="14" aria-label="Número 14, disponível">14</button><button type="button" class="num" value="15" aria-label="Número 15, disponível">15</button><button type="button" class="num" value="16" aria-label="Número 16, disponível">16</button><button type="button" class="num" value="17" aria-label="Número 17, disponível">17</button><button type="button" class="num" value="18" aria-label="Número 18, disponível">18</button><button type="button" class="num" value="19" aria-label="Número 19, disponível">19</button><button type="button" class="num" value="20" aria-label="Número 20, disponível">20</button><button type="button" class="num" value="21" aria-label="Número 21, disponível">21</button><button type="button" class="num" value="22" aria-label="Número 22, disponível">22</button><button type="button" class="num" value="23" aria-label="Número 23, disponível">23</button><button type="button" class="num" value="24" aria-label="Número 24, disponível">24</button><button type="button" class="num" value="25" aria-label="Número 25, disponível">25</button><button type="button" class="num" value="26" aria-label="Número 26, disponível">26</button><button type="button" class="num" value="27" aria-label="Número 27, disponível">27</button><button type="button" class="num" value="28" aria-label="Número 28, disponível">28</button><button type="button" class="num" value="29" aria-label="Número 29, disponível">29</button><button type="button" class="num" value="30" aria-label="Número 30, disponível">30</button><button type="button" class="num" value="31" aria-label="Número 31, disponível">31</button><button type="button" class="num" value="32" aria-label="Número 32, disponível">32</button><button type="button" class="num" value="33" aria-label="Número 33, disponível">33</button><button type="button" class="num" value="34" aria-label="Número 34, disponível">34</button><button type="button" class="num" value="35" aria-label="Número 35, disponível">35</button><button type="button" class="num" value="36" aria-label="Número 36, disponível">36</button><button type="button" class="num" value="37" aria-label="Número 37, disponível">37</button><button type="button" class="num" value="38" aria-label="Número 38, disponível">38</button><button type="button" class="num" value="39" aria-label="Número 39, disponível">39</button><button type="button" class="num" value="40" aria-label="Número 40, disponível">40</button><button type="button" class="num" value="41" aria-label="Número 41, disponível">41</button><button type="button" class="num" value="42" aria-label="Número 42, disponível">42</button><button type="button" class="num" value="43" aria-label="Número 43, disponível">43</button><button type="button" class="num" value="44" aria-label="Número 44, disponível">44</button><button type="button" class="num" value="45" aria-label="Número 45, disponível">45</button><button type="button" class="num" value="46" aria-label="Número 46, disponível">46</button><button type="button" class="num" value="47" aria-label="Número 47, disponível">47</button><button type="button" class="num" value="48" aria-label="Número 48, disponível">48</button><button type="button" class="num" value="49" aria-label="Número 49, disponível">49</button><button type="button" class="num" value="50" aria-label="Número 50, disponível">50</button><button type="button" class="num" value="51" aria-label="Número 51, disponível">51</button><button type="button" class="num" value="52" aria-label="Número 52, disponível">52</button><button type="button" class="num" value="53" aria-label="Número 53, disponível">53</button><button type="button" class="num" value="54" aria-label="Número 54, disponível">54</button><button type="button" class="num" value="55" aria-label="Número 55, disponível">55</button><button type="button" class="num" value="56" aria-label="Número 56, disponível">56</button><button type="button" class="num" value="57" aria-label="Número 57, disponível">57</button><button type="button" class="num" value="58" aria-label="Número 58, disponível">58</button><button type="button" class="num" value="59" aria-label="Número 59, disponível">59</button><button type="button" class="num" value="60" aria-label="Número 60, disponível">60</button><button type="button" class="num" value="61" aria-label="Número 61, disponível">61</button><button type="button" class="num" value="62" aria-label="Número 62, disponível">62</button><button type="button" class="num" value="63" aria-label="Número 63, disponível">63</button><button type="button" class="num" value="64" aria-label="Número 64, disponível">64</button><button type="button" class="num" value="65" aria-label="Número 65, disponível">65</button><button type="button" class="num" value="66" aria-label="Número 66, disponível">66</button><button type="button" class="num" value="67" aria-label="Número 67, disponível">67</button><button type="button" class="num" value="68" aria-label="Número 68, disponível">68</button><button type="button" class="num" value="69" aria-label="Número 69, disponível">69</button><button type="button" class="num" value="70" aria-label="Número 70, disponível">70</button><button type="button" class="num" value="71" aria-label="Número 71, disponível">71</button><button type="button" class="num" value="72" aria-label="Número 72, disponível">72</button><button type="button" class="num" value="73" aria-label="Número 73, disponível">73</button><button type="button" class="num" value="74" aria-label="Número 74, disponível">74</button><button type="button" class="num" value="75" aria-label="Número 75, disponível">75</button></div>
+<div class="board-footer"><span id="board-note">Toque em um número para consultar.</span><button id="reset" class="reset" type="button" disabled><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9a9 9 0 1 1 .9 9M3 4v5h5"/></svg> Limpar rodada</button></div>
+</section></div>
+<p id="notice" class="sr-only" role="status" aria-live="polite"></p><p class="save-error" id="save-error" hidden>O navegador não conseguiu salvar a rodada. Mantenha esta página aberta para continuar.</p>
+</main>
+<dialog id="reset-box" aria-labelledby="reset-title"><div class="dialog-content"><span class="icon-tile"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9a9 9 0 1 1 .9 9M3 4v5h5"/></svg></span><h2 id="reset-title">Limpar esta rodada?</h2><p>Os 75 números ficarão disponíveis para jogar de novo.</p><div class="dialog-actions"><button id="cancel-reset" class="secondary" autofocus>Continuar jogando</button><button id="confirm-reset" class="primary">Limpar rodada</button></div></div></dialog>
+<dialog id="share-box" aria-labelledby="share-title"><div class="dialog-content"><button class="close" type="button" aria-label="Fechar" id="close-share"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button><span class="icon-tile"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="2.7"/><circle cx="6" cy="12" r="2.7"/><circle cx="18" cy="19" r="2.7"/><path d="m8.5 10.7 7.1-4.3M8.5 13.3l7.1 4.3"/></svg></span><h2 id="share-title">Leve o jogo para o grupo</h2><p id="share-info">Envie o link para o grupo. Cada pessoa pode abrir o jogo no navegador e começar a sua rodada.</p>
+<div id="link-tools"><label for="share-link">Link do jogo</label><input id="share-link" type="url" readonly><div class="dialog-actions"><button type="button" class="primary" id="copy-link">Copiar link</button><button type="button" class="secondary" id="send-link" hidden>Compartilhar</button></div></div><p id="share-message" role="status" hidden></p></div></dialog>
+<script id="questions" type="application/json">["Marque quem parece ser muito séria.", "Marque alguém que você beijaria sem pensar duas vezes.", "Marque quem tem cara de quem ensaia uma discussão inteira no banho.", "Marque quem chamou sua atenção desde que entrou no grupo.", "Marque quem parece ter um deboche pronto para qualquer situação.", "Marque alguém com quem toparia um encontro às cegas.", "Marque quem tem cara de poucos amigos.", "Marque quem você acha que beija muito bem.", "Marque quem provavelmente já stalkeou um crush até descobrir o nome da professora da 3ª série.", "Marque alguém que gostaria de conhecer melhor.", "Marque quem parece ser difícil de conquistar.", "Marque quem você levaria para uma noite de muita diversão.", "Marque quem tem cara de quem adora uma confusão.", "Marque alguém que seria seu crush secreto.", "Marque quem diz \"estou chegando\", mas ainda nem saiu de casa.", "Marque quem parece ser muito seletiva.", "Marque quem tem cara de quem não leva desaforo para casa.", "Marque alguém que você chamaria para um date.", "Marque quem parece ser ciumenta.", "Marque quem tem uma energia irresistível.", "Marque quem sobreviveria a um apocalipse só para continuar sabendo das fofocas.", "Marque quem tem cara de quem demora três dias para responder.", "Marque alguém que você gostaria de receber um beijo.", "Marque quem parece ser difícil de agradar.", "Marque quem tem cara de quem adora uma indireta.", "Marque alguém que você acha muito atraente.", "Marque quem seria eliminada de um reality por falar demais.", "Marque quem parece ser toda cheia de razão.", "Marque quem você escolheria para uma viagem a dois.", "Marque quem tem cara de quem visualiza e deixa no vácuo.", "Marque alguém que parece ter um lado bem safadinho.", "Marque quem parece ser brava, mas tem coração mole.", "Marque quem você acha que tem o beijo mais perigoso do grupo.", "Marque quem tem cara de quem manda mensagem e depois joga o celular longe.", "Marque quem parece ser observadora e falar pouco.", "Marque alguém com quem toparia passar uma noite conversando.", "Marque quem tem cara de quem não gosta de perder uma discussão.", "Marque quem parece ter facilidade para conquistar alguém.", "Marque quem provavelmente já investigou alguém usando um perfil falso.", "Marque quem parece ser um pouquinho convencida.", "Marque alguém que você teria coragem de chamar no PV.", "Marque quem tem cara de quem acompanha tudo, mas finge que não.", "Marque quem você acha que tem mais atitude na hora da conquista.", "Marque quem parece ser fiscal da vida alheia.", "Marque quem fala \"não vou beber hoje\" e termina sendo a última a ir embora.", "Marque alguém que despertou sua curiosidade.", "Marque quem tem cara de quem sempre quer ter a última palavra.", "Marque quem você beijaria escondido numa festa.", "Marque quem transforma qualquer situação simples em uma novela mexicana.", "Marque quem parece ser desconfiada até da própria sombra.", "Marque alguém que seria sua companhia perfeita para um jantar romântico.", "Marque quem tem cara de quem guarda rancor por seis meses.", "Marque quem você acha que sabe provocar só com um olhar.", "Marque quem seria capaz de discutir com o GPS e ainda achar que está certa.", "Marque quem parece ser a mais exigente do grupo.", "Marque alguém que você gostaria de encontrar pessoalmente.", "Marque quem tem cara de quem faz drama por pouca coisa.", "Marque quem você acha que tem um charme perigoso.", "Marque quem parece ser quietinha, mas não perde um babado.", "Marque alguém que você gostaria de beijar por curiosidade.", "Marque quem tem cara de quem manda áudio de 8 minutos para contar uma fofoca de 30 segundos.", "Marque quem parece ser a mais competitiva.", "Marque quem tem cara de quem se acha um pouquinho demais.", "Marque quem você acha que seria uma tentação.", "Marque quem seria capaz de criar um casamento inteiro na cabeça depois de um encontro.", "Marque alguém que você gostaria de receber uma mensagem inesperada no PV.", "Marque quem tem cara de quem não resiste a uma boa cantada.", "Marque quem você acha que faria você perder a postura.", "Marque quem seria a primeira a dizer \"EU AVISEI!\" quando tudo dá errado.", "Marque quem tem cara de quem ensaia uma discussão inteira no banho.", "Marque quem você levaria para um lugar onde ninguém pudesse atrapalhar. 👀", "Marque quem tem cara de quem guarda prints como se fossem provas de um processo judicial.", "Marque quem seria capaz de flertar, passar vergonha e ainda sair achando que arrasou.", "Marque quem tem cara de quem manda mensagem e depois joga o celular longe.", "Marque quem seria capaz de transformar uma simples ida ao mercado em um grande acontecimento."]</script>
+<script>(() => {
+  'use strict';
+  const questions = JSON.parse(document.getElementById('questions').textContent);
+  const el = id => document.getElementById(id);
+  const key = 'entre-nos.marque-quem.rodada.v1';
+  const numbers = [...el('grid').querySelectorAll('button')];
+  const validNumber = n => Number.isInteger(n) && n >= 1 && n <= questions.length;
+  const fresh = () => ({ used: [], current: null });
+  let state = fresh();
+  let canSave = true;
+  let copyTimer;
+
+  function read() {
+    try {
+      const raw = localStorage.getItem(key);
+      if (!raw) return fresh();
+      const saved = JSON.parse(raw);
+      const used = Array.isArray(saved?.used) ? [...new Set(saved.used.filter(validNumber))] : [];
+      return { used, current: used.includes(saved.current) ? saved.current : used.at(-1) ?? null };
+    } catch {
+      return state;
+    }
+  }
+
+  function render() {
+    const { used, current } = state;
+    el('count').textContent = used.length + ' / ' + questions.length;
+    el('remaining').textContent = questions.length - used.length;
+    el('used-count').textContent = used.length;
+    el('reset').disabled = used.length === 0;
+    el('empty').hidden = current !== null;
+    el('result').hidden = current === null;
+    el('card-caption').textContent = current === null ? 'Carta da vez' : 'Carta da vez · Nº ' + current;
+    el('question-text').textContent = current === null ? '' : questions[current - 1];
+    el('board-note').textContent = used.length === questions.length ? 'Todas as 75 perguntas já saíram!' : 'Toque em um número para consultar.';
+    numbers.forEach((button, i) => {
+      const n = i + 1;
+      const selected = used.includes(n);
+      button.classList.toggle('used', selected);
+      button.classList.toggle('current', n === current);
+      button.setAttribute('aria-label', 'Número ' + n + (selected ? ', já selecionado' : ', disponível'));
+      if (n === current) button.setAttribute('aria-current', 'true');
+      else button.removeAttribute('aria-current');
+    });
+  }
+
+  async function update(change) {
+    function commit() {
+      if (canSave) state = read();
+      change();
+      try { localStorage.setItem(key, JSON.stringify(state)); }
+      catch { canSave = false; el('save-error').hidden = false; }
+      render();
+    }
+    if (navigator.locks && location.protocol !== 'file:') {
+      let applied = false;
+      try { await navigator.locks.request(key, () => { applied = true; commit(); }); }
+      catch (error) { if (!applied) commit(); else throw error; }
+    } else commit();
+  }
+
+  function clearError() {
+    el('number-error').hidden = true;
+    el('pick').removeAttribute('aria-invalid');
+  }
+  async function reveal(n, fromGrid) {
+    clearError();
+    let alreadyUsed = false;
+    await update(() => {
+      alreadyUsed = state.used.includes(n);
+      if (!alreadyUsed) state.used.push(n);
+      state.current = n;
+    });
+    el('pick').value = '';
+    el('notice').textContent = (alreadyUsed ? 'Você consultou novamente o número ' : 'Número ') + n + '. ' + questions[n - 1];
+    el('result').classList.remove('revealed');
+    void el('result').offsetWidth;
+    el('result').classList.add('revealed');
+    if (fromGrid && matchMedia('(max-width: 780px)').matches) {
+      el('card').scrollIntoView({ block: 'center', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
+    } else if (!fromGrid && matchMedia('(pointer:fine)').matches) {
+      el('pick').focus({ preventScroll: true });
+    }
+  }
+
+  el('pick-form').addEventListener('submit', event => {
+    event.preventDefault();
+    const value = el('pick').value.trim();
+    const n = Number(value);
+    if (!/^\d+$/.test(value) || !validNumber(n)) {
+      el('number-error').textContent = 'Escolha um número inteiro de 1 a 75.';
+      el('number-error').hidden = false;
+      el('pick').setAttribute('aria-invalid', 'true');
+      el('pick').focus();
+      return;
+    }
+    reveal(n, false);
+  });
+  el('pick').addEventListener('input', clearError);
+  el('grid').addEventListener('click', event => {
+    const button = event.target.closest('button');
+    if (button) reveal(Number(button.value), true);
+  });
+  el('reset').addEventListener('click', () => el('reset-box').showModal());
+  el('cancel-reset').addEventListener('click', () => el('reset-box').close());
+  el('confirm-reset').addEventListener('click', async () => {
+    await update(() => { state = fresh(); });
+    el('reset-box').close();
+    el('pick').value = '';
+    clearError();
+    el('notice').textContent = 'Rodada limpa. Os 75 números estão disponíveis.';
+    el('pick').focus();
+  });
+  window.addEventListener('storage', event => {
+    if ((event.key === key || event.key === null) && canSave) { state = read(); render(); }
+  });
+
+  const copyButton = el('copy-question');
+  const copyLabel = copyButton.innerHTML;
+  copyButton.addEventListener('click', async () => {
+    if (state.current === null) return;
+    const text = state.current + '. ' + questions[state.current - 1];
+    let copied = false;
+    try { await navigator.clipboard.writeText(text); copied = true; }
+    catch {
+      const field = document.createElement('textarea');
+      field.value = text;
+      field.style.cssText = 'position:fixed;left:-100vw;top:0';
+      document.body.append(field);
+      field.select();
+      try { copied = document.execCommand('copy'); } catch {}
+      field.remove();
+      copyButton.focus({ preventScroll: true });
+    }
+    clearTimeout(copyTimer);
+    if (copied) {
+      copyButton.textContent = 'Pergunta copiada!';
+      el('notice').textContent = 'Pergunta copiada.';
+      copyTimer = setTimeout(() => { copyButton.innerHTML = copyLabel; }, 1700);
+    } else {
+      const range = document.createRange();
+      range.selectNodeContents(el('question-text'));
+      const selection = window.getSelection();
+      selection.removeAllRanges();
+      selection.addRange(range);
+      el('notice').textContent = 'Selecione Copiar no seu navegador.';
+      copyButton.textContent = 'Use Copiar no navegador';
+      copyTimer = setTimeout(() => { copyButton.innerHTML = copyLabel; }, 3000);
+    }
+  });
+
+  const localFile = location.protocol === 'file:';
+  const shareURL = new URL(location.href);
+  shareURL.hash = '';
+  shareURL.search = '';
+  const linkField = el('share-link');
+  linkField.value = shareURL.href;
+  el('link-tools').hidden = localFile;
+  el('send-link').hidden = localFile || typeof navigator.share !== 'function';
+  if (localFile) el('share-info').textContent = 'Envie este arquivo HTML como documento ao grupo. Cada pessoa pode abri-lo no navegador para começar sua rodada.';
+  el('share').addEventListener('click', () => {
+    el('share-message').hidden = true;
+    el('share-box').showModal();
+  });
+  function showShareMessage(message) {
+    el('share-message').textContent = message;
+    el('share-message').hidden = false;
+  }
+  el('copy-link').addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(linkField.value);
+      showShareMessage('Link copiado! Agora é só colar no grupo.');
+    } catch {
+      linkField.focus();
+      linkField.select();
+      showShareMessage('O link está selecionado. Use a opção Copiar do navegador.');
+    }
+  });
+  el('send-link').addEventListener('click', async () => {
+    try { await navigator.share({title: 'Marque quem? · Entre Nós', url: linkField.value}); }
+    catch(error) { if (error.name !== 'AbortError') showShareMessage('Toque em Copiar link para enviá-lo ao grupo.'); }
+  });
+  el('close-share').addEventListener('click', () => el('share-box').close());
+  document.querySelectorAll('dialog').forEach(dialog => dialog.addEventListener('click', e => {
+    if (e.target === dialog) dialog.close();
+  }));
+  state = read();
+  render();
+})();
+</script>
+</body></html>
